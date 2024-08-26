@@ -1,7 +1,11 @@
-@import '../../root.css';
+@import "../../root.css";
 
 body {
-    background-color: var(--cor-fundo);
+  background-color: var(--cor-fundo);
+}
+
+.player-container {
+  height: 100%;
 }
 
 .card-players {
@@ -40,28 +44,131 @@ body {
 }
 
 .timer-in span {
-    font-size: 96px;
+  font-size: 96px;
 }
 
-.jogador1, .jogador2 {
-    height: 500px;
-    width: 400px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: var(--cor-jogadores);
-    border-radius: 8px;
-    box-shadow: 0 0 50px rgba(0, 0, 0, 0.6);
+.jogador1,
+.jogador2 {
+  height: 500px;
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: var(--cor-jogadores);
+  border-radius: 8px;
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.6);
+  padding-top: 20px;
 }
 
 .player-title {
-    text-align: center;
-    width: 100%;
-    margin: 8px;
-    color: var(--cor-texto);
+  text-align: center;
+  width: 100%;
+  margin: 8px;
+  color: var(--cor-texto);
 }
 
 .player-title h2 {
-    text-shadow: 0 0 30px rgba(0, 0, 0, 1);
+  text-shadow: 0 0 30px rgba(0, 0, 0, 1);
+}
+
+.options-btns {
+  display: flex;
+  justify-content: space-between;
+  margin: 8px;
+}
+
+.skip-btn {
+  background-color: goldenrod;
+  border: none;
+  padding: 8px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.pass-btn {
+  background-color: cadetblue;
+  border: none;
+  padding: 8px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.send-btn {
+  background-color: greenyellow;
+  border: none;
+  padding: 8px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.question-number {
+  font-size: 20px;
+  margin-bottom: 40px;
+}
+
+.question {
+  font-size: 20px;
+  margin-bottom: 40px;
+}
+
+.answers form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.disabled {
+  background-color: rgba(0, 0, 0, 1);
+  height: 520px;
+  width: 400px;
+  position: absolute;
+  top: 112px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  color: white;
+}
+
+.game-start {
+  background-color: rgba(0, 0, 0, 0.8);
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+}
+
+.start-box {
+  width: 500px;
+  height: 300px;
+  background-color: white;
+  border-radius: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 12px;
+}
+
+.start-box h3 {
+  font-size: 32px;
+}
+
+.start-box button {
+  border: none;
+  padding: 8px;
+  border-radius: 8px;
+  width: 100%;
+  background-color: rgb(0, 255, 0);
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
 }
