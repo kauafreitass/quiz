@@ -1,0 +1,67 @@
+@import '../../root.css';
+
+body {
+    background-color: var(--cor-fundo);
+}
+
+.card-players {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.section-timer {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.timer-out {
+  background-color: white;
+  border-radius: 100%;
+  width: 300px;
+  height: 300px;
+}
+
+.timer-in {
+  background-color: var(--cor-timer);
+  border-radius: 100%;
+  width: 280px;
+  height: 280px;
+  position: relative;
+  left: 10px;
+  top: 10px;
+  color: var(--cor-texto);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.timer-in span {
+    font-size: 96px;
+}
+
+.jogador1, .jogador2 {
+    height: 500px;
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--cor-jogadores);
+    border-radius: 8px;
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.6);
+}
+
+.player-title {
+    text-align: center;
+    width: 100%;
+    margin: 8px;
+    color: var(--cor-texto);
+}
+
+.player-title h2 {
+    text-shadow: 0 0 30px rgba(0, 0, 0, 1);
+}
