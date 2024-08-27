@@ -120,10 +120,10 @@ body {
 
 .disabled {
   background-color: rgba(0, 0, 0, 1);
-  height: 520px;
+  height: 560px;
   width: 400px;
   position: absolute;
-  top: 112px;
+  top: 235px;
   border-radius: 8px;
   display: flex;
   align-items: center;

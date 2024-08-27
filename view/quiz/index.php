@@ -1,3 +1,12 @@
+<?php 
+
+    require_once 'C:\xampp\htdocs\quiz\config.php';
+    require_once 'C:\xampp\htdocs\quiz\controller\SelectRandomController.php';
+
+    $answers = [];
+
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -20,7 +29,7 @@
         <section class="players">
             <div class="player-container">
                 <div class="disabled" id="disabled-div-1">
-                    <span id="disable-text-1">Aguarde a sua vez!</span>
+                    <span id="disabled-text-1">Aguarde a sua vez!</span>
                 </div>
                 <div class="player-title">
                     <h2>Jogador 1</h2>
@@ -34,6 +43,15 @@
                     </div>
                     <div class="answers">
                         <form method="post">
+                            <?php 
+                            foreach($answers as $answer): ?>
+                            <div class="answer<?= $answer['id'] ?>">
+                                <input type="radio" id="answer<?= $answer['id'] ?>" name="answer<?= $answer['id'] ?>"
+                                    value="<?= $answer['id'] ?>">
+                                <label for="answer<?= $answer['id'] ?>"> <?= $answer['texto_pergunta'] ?></label>
+                            </div>
+                            <?php endforeach; ?>
+
                             <div class="answer1">
                                 <input type="radio" id="answer1" name="answer" value="1">
                                 <label for="answer1">Resposta 1</label>
@@ -55,7 +73,8 @@
                 </div>
                 <div class="options-btns">
                     <div>
-                        <button class="skip-btn" onclick="restartTimer(), skipToPlayer2()">Pular</button>
+                        <button class="skip-btn" onclick="restartTimer(), skipToAnotherPlayer(), disableButton1()"
+                            id="skip-btn">Pular</button>
                     </div>
                     <button class="send-btn">Enviar</button>
                 </div>
@@ -73,7 +92,7 @@
         <section class="players">
             <div class="player-container">
                 <div class="disabled" id="disabled-div-2">
-                    <span id="disable-text-2">Aguarde a sua vez!</span>
+                    <span id="disabled-text-2">Aguarde a sua vez!</span>
                 </div>
                 <div class="player-title">
                     <h2>Jogador 2</h2>
@@ -108,7 +127,8 @@
                 </div>
                 <div class="options-btns">
                     <div>
-                        <button class="skip-btn" onclick="restartTimer(), skipToPlayer1()">Pular</button>
+                        <button class="skip-btn" onclick="restartTimer(), skipToAnotherPlayer()"
+                            id="skip-btn">Pular</button>
                     </div>
                     <button class="send-btn">Enviar</button>
                 </div>
