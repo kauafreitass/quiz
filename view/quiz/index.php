@@ -1,9 +1,9 @@
-<?php 
+<?php
 
-    require_once 'C:\xampp\htdocs\quiz\config.php';
-    require_once 'C:\xampp\htdocs\quiz\controller\SelectRandomController.php';
+require_once 'C:\xampp\htdocs\quiz\config.php';
+require_once 'C:\xampp\htdocs\quiz\controller\SelectRandomController.php';
 
-    $answers = [];
+$answers = [];
 
 ?>
 
@@ -14,7 +14,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Document</title>
+    <title>Quiz Game</title>
 </head>
 
 <body>
@@ -36,37 +36,28 @@
                 </div>
                 <div class="jogador1">
                     <div class="question-number">
-                        <h4>Questão #</h4>
+                        <h4>Questão #1</h4>
                     </div>
                     <div class="question">
-                        <h5>Lorem ipsum dolor sit amet.</h5>
+                        <h5>Qual é a capital do Brasil?</h5>
                     </div>
                     <div class="answers">
                         <form method="post">
-                            <?php 
-                            foreach($answers as $answer): ?>
-                            <div class="answer<?= $answer['id'] ?>">
-                                <input type="radio" id="answer<?= $answer['id'] ?>" name="answer<?= $answer['id'] ?>"
-                                    value="<?= $answer['id'] ?>">
-                                <label for="answer<?= $answer['id'] ?>"> <?= $answer['texto_pergunta'] ?></label>
-                            </div>
-                            <?php endforeach; ?>
-
                             <div class="answer1">
                                 <input type="radio" id="answer1" name="answer" value="1">
-                                <label for="answer1">Resposta 1</label>
+                                <label for="answer1">Rio de Janeiro</label>
                             </div>
                             <div class="answer2">
-                                <input type="radio" id="answer2" name="answer" value="1">
-                                <label for="answer2">Resposta 2</label>
+                                <input type="radio" id="answer2" name="answer" value="2">
+                                <label for="answer2">São Paulo</label>
                             </div>
                             <div class="answer3">
-                                <input type="radio" id="answer3" name="answer" value="1">
-                                <label for="answer3">Resposta 3</label>
+                                <input type="radio" id="answer3" name="answer" value="3">
+                                <label for="answer3">Brasília</label>
                             </div>
                             <div class="answer4">
-                                <input type="radio" id="answer4" name="answer" value="1">
-                                <label for="answer4">Resposta 4</label>
+                                <input type="radio" id="answer4" name="answer" value="4">
+                                <label for="answer4">Salvador</label>
                             </div>
                         </form>
                     </div>
@@ -99,28 +90,28 @@
                 </div>
                 <div class="jogador1">
                     <div class="question-number">
-                        <h4>Questão #</h4>
+                        <h4>Questão #2</h4>
                     </div>
                     <div class="question">
-                        <h5>Lorem ipsum dolor sit amet.</h5>
+                        <h5>Quem pintou a Mona Lisa?</h5>
                     </div>
                     <div class="answers">
                         <form method="post">
                             <div class="answer1">
-                                <input type="radio" id="answer1" name="answer" value="1">
-                                <label for="answer1">Resposta 1</label>
+                                <input type="radio" id="player2_answer1" name="player2_answer" value="1">
+                                <label for="player2_answer1">Pablo Picasso</label>
                             </div>
                             <div class="answer2">
-                                <input type="radio" id="answer2" name="answer" value="1">
-                                <label for="answer2">Resposta 2</label>
+                                <input type="radio" id="player2_answer2" name="player2_answer" value="2">
+                                <label for="player2_answer2">Vincent van Gogh</label>
                             </div>
                             <div class="answer3">
-                                <input type="radio" id="answer3" name="answer" value="1">
-                                <label for="answer3">Resposta 3</label>
+                                <input type="radio" id="player2_answer3" name="player2_answer" value="3">
+                                <label for="player2_answer3">Leonardo da Vinci</label>
                             </div>
                             <div class="answer4">
-                                <input type="radio" id="answer4" name="answer" value="1">
-                                <label for="answer4">Resposta 4</label>
+                                <input type="radio" id="player2_answer4" name="player2_answer" value="4">
+                                <label for="player2_answer4">Michelangelo</label>
                             </div>
                         </form>
                     </div>
