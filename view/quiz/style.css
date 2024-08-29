@@ -49,13 +49,21 @@
 body {
   margin: 0;
   padding: 0;
-  background-color: var(--cor-fundo);
   font-family: 'Roboto', sans-serif;
   color: var(--cor-texto);
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
+  transition: background-color 0.6s ease; /* Adicionando transição para mudanças de cor do fundo */
+}
+
+.green {
+  background-color: var(--cor-fundo2);
+}
+
+.pink {
+  background-color: var(--cor-fundo);
 }
 
 .container {
@@ -86,7 +94,7 @@ body {
 }
 
 .player-container.active {
-  animation: fadeInOut 1s ease-in-out;
+  animation: fadeInOut 0.4s ease-in-out;
 }
 
 .player-title h2 {
@@ -98,11 +106,11 @@ body {
   border-radius: 10px;
 }
 
-#player1 h2{
+#player1{
   background-color: var(--cor-player1);
 }
 
-#player2 h2{
+#player2{
   background-color: var(--cor-player2);
 }
 
@@ -176,7 +184,6 @@ body {
 }
 
 .send-btn {
-  background-color: var(--cor-fundo);
   color: var(--cor-texto);
 }
 
@@ -265,6 +272,16 @@ body {
   text-align: center;
 }
 
+#start-form input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  border: 2px solid var(--cor-fundo);
+  border-radius: 5px;
+  font-size: 16px;
+  text-align: center;
+  margin-bottom: 10px; /* Adicionando margem inferior */
+}
+
 #start-button {
   padding: 18px 60px; /* Aumentando a largura do botão */
   background-color: var(--cor-fundo);
@@ -299,7 +316,7 @@ body {
   align-items: center;
   z-index: 10;
   border-radius: 20px;
-  animation: fadeIn 0.5s ease-in-out;
+  animation: fadeIn 0.3s ease-in-out;
 }
 
 .disabled span {
@@ -307,6 +324,37 @@ body {
   font-size: 24px;
   font-weight: bold;
   text-align: center;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.progress {
+  width: 50%; /* Exemplo de largura */
+  height: 100%;
+  background-color: var(--cor-jogadores);
+  border-radius: 10px;
+  transition: width 0.3s ease;
+}
+
+.progress-bar-pink {
+  background-color: var(--cor-fundo);
+}
+
+.progress-bar-green {
+  background-color: var(--cor-fundo2);
+}
+
+.progress-pink {
+  border: 1px solid var(--cor-fundo);
+}
+
+.progress-green {
+  border: 1px solid var(--cor-fundo2);
 }
 
 @media (max-width: 768px) {
