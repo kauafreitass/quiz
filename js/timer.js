@@ -16,13 +16,13 @@ S    }
 }
 
 function startTimer() {
-  Timer(29, display);
+  Timer(14, display);
 }
 
 function restartTimer() {
   clearInterval(timerInterval);
-  display.textContent = "30";
-  Timer(29, display);   
+  display.textContent = "15";
+  Timer(14, display);   
 }
 
 
