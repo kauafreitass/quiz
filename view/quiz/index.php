@@ -3,16 +3,16 @@
     require_once 'C:\aluno2\xampp\htdocs\quiz\config.php';
     require_once 'C:\aluno2\xampp\htdocs\quiz\controller\SelectRandomController.php';
 
-    if (isset(($_SESSION["jogando"]))) {
-    ?>
-        <script src="../../js/start.js">
-            start();
-        </script>
-    <?php
-    } else {
-        $sessao = $_SESSION["jogando"];
-        echo $sessao;
-    };
+    // if (isset(($_SESSION["jogando"]))) {
+    // ?>
+    //     <script src="../../js/start.js">
+    //         start();
+    //     </script>
+    // <?php
+    // } else {
+    //     $sessao = $_SESSION["jogando"];
+    //     echo $sessao;
+    // };
 
     ?>
 

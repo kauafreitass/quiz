@@ -36,3 +36,13 @@ $(document).keydown(function(event) {
     event.preventDefault(); // Impede o comportamento padrão do teclado
 });
 
+document.addEventListener('keydown', function(event) {
+    const key = event.key;
+    if (key >= '1' && key <= '4') {
+        // Encontre o primeiro elemento de entrada de rádio que corresponda ao número da tecla
+        const radio = document.querySelector(`input[type="radio"][value="${key}"]`);
+        if (radio) {
+            radio.checked = true;
+        }
+    }
+});
