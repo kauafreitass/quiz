@@ -88,7 +88,13 @@ if (isset(($_SESSION["jogando"]))) {
                 <div class="options-btns">
                     <div>
                         <button class="skip-btn" onclick="restartTimer(), skipToAnotherPlayer(), disableButton1()"
-                            id="skip-btn" type="button">Pular</button>
+                            id="skip-btn">Pular</button>
+                            
+    </div>
+
+
+<!-- -->
+
                     </div>
                     <button class="send-btn" type="submit">Enviar</button>
                 </div>
@@ -154,33 +160,10 @@ if (isset(($_SESSION["jogando"]))) {
     <script src="../../js/start.js"></script>
     <script src="../../js/timer.js"></script>
     <script src="../../js/skip.js"></script>
-    <script>
-        function handleSkip() {
-            restartTimer();
-            skipToAnotherPlayer();
-            disableButton1();
-        }
+    <script src="../../js/keyboard.js"></script>
 
-        function restartTimer() {
-            console.log("Timer reiniciado");
-        }
-
-        function skipToAnotherPlayer() {
-            console.log("Pulando para outro jogador");
-        }
-
-        function disableButton1() {
-            console.log("Botão desativado");
-        }
-
-        // Adiciona o listener para o evento keydown
-        document.addEventListener('keydown', function(event) {
-            if (event.code === 'Space') { // Verifica se a tecla pressionada é a tecla Espaço
-                event.preventDefault(); // Impede o comportamento padrão da tecla Espaço (rolar a página)
-                handleSkip(); // Chama a função de pular
-            }
-        });
-    </script>
+    
+   
 
 </body>
 
