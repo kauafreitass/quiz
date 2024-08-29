@@ -6,13 +6,14 @@
 }
 
 :root {
-    --cor-fundo: blueviolet;
+    --cor-fundo: #FF1493;
+    --cor-fundo2: #1cff1c;
     --cor-card: white;
     --cor-timer: black;
     --cor-jogadores: white;
     --cor-texto: white;
     --cor-texto2: black;
     --borda-preta: black;
-    --cor-player1: blueviolet;
-    --cor-player2: red;
+    --cor-player1: #FF1493;
+    --cor-player2: #1cff1c;
 }

@@ -10,6 +10,10 @@ function skipToAnotherPlayer() {
 
   const textAwait2 = document.getElementById("disabled-text-2");
   textAwait2.classList.toggle("hidden");
+
+  const body = document.body;
+  body.classList.toggle("green");
+  body.classList.toggle("pink");
 }
 
 function disableButton1() {
