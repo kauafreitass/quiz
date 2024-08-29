@@ -83,7 +83,7 @@
                     </div>
                     <div class="options-btns">
                         <div>
-                            <button class="skip-btn" onclick="restartTimer(), skipToAnotherPlayer(), disableButton1()"
+                            <button class="skip-btn" onclick="restartTimer(), skipToAnotherPlayer()"
                                 id="skip-btn" type="button">Pular</button>
                         </div>
                         <button class="send-btn pink" type="submit">Enviar</button>
@@ -154,6 +154,7 @@
         <script src="../../js/timer.js"></script>
         <script src="../../js/skip.js"></script>
         <script src="../../js/progress.js"></script>
+        <script src="../../js/keyboard.js"></script>
 
     </body>
 

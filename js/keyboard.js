@@ -1,14 +1,3 @@
-function restartTimer() {
-    console.log("Timer reiniciado");
-}
-
-function skipToAnotherPlayer() {
-    console.log("Pulando para outro jogador");
-}
-
-function disableButton1() {
-    console.log("Botão desativado");
-}
 
 function handleSkip() {
     restartTimer();
