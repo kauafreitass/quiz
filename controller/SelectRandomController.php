@@ -1,6 +1,6 @@
 <?php 
 
-require_once 'C:\xampp\htdocs\quiz\model\SelectRandomModel.php';
+require_once 'C:\aluno2\xampp\htdocs\quiz\model\SelectRandomModel.php';
 
 class SelectRandom {
     

@@ -1,9 +1,28 @@
 <?php
+session_start();
+require_once 'C:\aluno2\xampp\htdocs\quiz\config.php';
+require_once 'C:\aluno2\xampp\htdocs\quiz\controller\SelectRandomController.php';
+if (isset(($_SESSION["jogando"]))) {
+?>
+    <script>
+        function start() {
+            const button = document.getElementById("box");
+            button.classList.add("hidden");
 
-require_once 'C:\xampp\htdocs\quiz\config.php';
-require_once 'C:\xampp\htdocs\quiz\controller\SelectRandomController.php';
+            const player1 = document.getElementById('disabled-div-1');
+            player1.classList.remove('disabled');
 
-$answers = [];
+            const textAwait = document.getElementById('disabled-text-1')
+            textAwait.classList.add("hidden");
+            startTimer();
+        }
+
+        start();
+    </script>
+<?php
+} else {
+    $_SESSION["jogando"] = true;
+};
 
 ?>
 
@@ -23,7 +42,11 @@ $answers = [];
         <div class="game-start" id="box">
             <div class="start-box">
                 <h3>Deseja começar o jogo?</h3>
-                <button onClick="start()" id="start-button">Começar</button>
+                <form id="start-form">
+                    <label for="num-perguntas">Escolha o número de perguntas (máximo 40):</label>
+                    <input type="number" id="num-perguntas" name="num-perguntas" min="1" max="40" value="10">
+                    <button type="button" onClick="start()" id="start-button">Começar</button>
+                </form>
             </div>
         </div>
         <section class="players">
@@ -31,7 +54,7 @@ $answers = [];
                 <div class="disabled" id="disabled-div-1">
                     <span id="disabled-text-1">Aguarde a sua vez!</span>
                 </div>
-                <div class="player-title">
+                <div class="player-title" id="player1">
                     <h2>Jogador 1</h2>
                 </div>
                 <div class="jogador1">
@@ -59,16 +82,17 @@ $answers = [];
                                 <input type="radio" id="answer4" name="answer" value="4">
                                 <label for="answer4">Salvador</label>
                             </div>
-                        </form>
+
                     </div>
                 </div>
                 <div class="options-btns">
                     <div>
                         <button class="skip-btn" onclick="restartTimer(), skipToAnotherPlayer(), disableButton1()"
-                            id="skip-btn">Pular</button>
+                            id="skip-btn" type="button">Pular</button>
                     </div>
-                    <button class="send-btn">Enviar</button>
+                    <button class="send-btn" type="submit">Enviar</button>
                 </div>
+                </form>
             </div>
         </section>
 
@@ -85,7 +109,7 @@ $answers = [];
                 <div class="disabled" id="disabled-div-2">
                     <span id="disabled-text-2">Aguarde a sua vez!</span>
                 </div>
-                <div class="player-title">
+                <div class="player-title" id="player2">
                     <h2>Jogador 2</h2>
                 </div>
                 <div class="jogador1">
@@ -96,7 +120,7 @@ $answers = [];
                         <h5>Quem pintou a Mona Lisa?</h5>
                     </div>
                     <div class="answers">
-                        <form method="post">
+                        <form method="post" action="<?= $_SERVER['PHP_SELF'] ?>">
                             <div class="answer1">
                                 <input type="radio" id="player2_answer1" name="player2_answer" value="1">
                                 <label for="player2_answer1">Pablo Picasso</label>
@@ -113,15 +137,15 @@ $answers = [];
                                 <input type="radio" id="player2_answer4" name="player2_answer" value="4">
                                 <label for="player2_answer4">Michelangelo</label>
                             </div>
-                        </form>
                     </div>
                 </div>
                 <div class="options-btns">
                     <div>
                         <button class="skip-btn" onclick="restartTimer(), skipToAnotherPlayer()"
-                            id="skip-btn">Pular</button>
+                            id="skip-btn" type="button">Pular</button>
                     </div>
-                    <button class="send-btn">Enviar</button>
+                    <button class="send-btn" type="submit">Enviar</button>
+                    </form>
                 </div>
             </div>
         </section>
