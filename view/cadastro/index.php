@@ -11,7 +11,6 @@ $registerQuestionsController = new RegisterQuestionsController($pdo);
 if (isset($_POST["tipo"]) && isset($_POST["texto_pergunta"]) && isset($_POST["correta"]) && isset($_POST["incorreta1"]) && isset($_POST["incorreta2"]) && isset($_POST["incorreta3"])) {
     $registerQuestionsController->registerQuestions($_POST["tipo"], $_POST["texto_pergunta"], $_POST["correta"], $_POST["incorreta1"], $_POST["incorreta2"], $_POST["incorreta3"]);
 }
-
 ?>
 
 <!DOCTYPE html>
