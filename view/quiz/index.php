@@ -130,6 +130,33 @@ $answers = [];
     <script src="../../js/start.js"></script>
     <script src="../../js/timer.js"></script>
     <script src="../../js/skip.js"></script>
+    <script>
+        function handleSkip() {
+            restartTimer();
+            skipToAnotherPlayer();
+            disableButton1();
+        }
+
+        function restartTimer() {
+            console.log("Timer reiniciado");
+        }
+
+        function skipToAnotherPlayer() {
+            console.log("Pulando para outro jogador");
+        }
+
+        function disableButton1() {
+            console.log("Botão desativado");
+        }
+
+        // Adiciona o listener para o evento keydown
+        document.addEventListener('keydown', function(event) {
+            if (event.code === 'Space') { // Verifica se a tecla pressionada é a tecla Espaço
+                event.preventDefault(); // Impede o comportamento padrão da tecla Espaço (rolar a página)
+                handleSkip(); // Chama a função de pular
+            }
+        });
+    </script>
 
 </body>
 
