@@ -1,174 +1,362 @@
 @import "../../root.css";
 
-body {
-  background-color: var(--cor-fundo);
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.05);
+  }
+
+  100% {
+    transform: scale(1);
+  }
 }
 
-.player-container {
-  height: 100%;
+@keyframes fadeInOut {
+
+  0%,
+  100% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--cor-fundo);
+  font-family: 'Roboto', sans-serif;
+  color: var(--cor-texto);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 30px;
+  width: 100%;
 }
 
 .card-players {
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-}
-
-.section-timer {
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.timer-out {
-  background-color: white;
-  border-radius: 100%;
-  width: 300px;
-  height: 300px;
-}
-
-.timer-in {
-  background-color: var(--cor-timer);
-  border-radius: 100%;
-  width: 280px;
-  height: 280px;
-  position: relative;
-  left: 10px;
-  top: 10px;
-  color: var(--cor-texto);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-}
-
-.timer-in span {
-  font-size: 96px;
-}
-
-.jogador1,
-.jogador2 {
-  height: 500px;
-  width: 400px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  background-color: var(--cor-jogadores);
-  border-radius: 8px;
-  box-shadow: 0 0 50px rgba(0, 0, 0, 0.6);
-  padding-top: 20px;
-}
-
-.player-title {
-  text-align: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
   width: 100%;
-  margin: 8px;
-  color: var(--cor-texto);
+  margin: 80px;
+}
+
+.player-container {
+  position: relative;
+  background-color: var(--cor-jogadores);
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.player-container.active {
+  animation: fadeInOut 1s ease-in-out;
 }
 
 .player-title h2 {
-  text-shadow: 0 0 30px rgba(0, 0, 0, 1);
+  color: var(--cor-texto2);
+  font-size: 28px;
+  margin-bottom: 25px;
+  text-align: center;
+  font-weight: 700;
+}
+
+.question-number h4,
+.question h5 {
+  color: var(--cor-texto2);
+  margin-bottom: 20px;
+  text-align: center;
+  font-weight: 600;
+}
+
+.answers {
+  margin-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  width: 100%;
+}
+
+.answers div {
+  margin-bottom: 15px;
+  text-align: left;
+  width: 100%;
+  background-color: #f5f5f5;
+  border-radius: 10px;
+  padding: 15px;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+}
+
+.answers div:hover {
+  background-color: #e0e0e0;
+}
+
+.answers input[type="radio"] {
+  margin-right: 10px;
+}
+
+.answers label {
+  color: var(--cor-texto2);
+  cursor: pointer;
+  font-size: 18px;
+  display: inline;
 }
 
 .options-btns {
   display: flex;
   justify-content: space-between;
-  margin: 8px;
+  gap: 20px;
+  margin-top: 30px;
+  width: 100%;
+}
+
+.skip-btn,
+.send-btn {
+  padding: 15px 30px;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  font-size: 1.1em;
+  flex: 1;
 }
 
 .skip-btn {
-  background-color: goldenrod;
-  border: none;
-  padding: 8px;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.pass-btn {
-  background-color: cadetblue;
-  border: none;
-  padding: 8px;
-  border-radius: 4px;
-  cursor: pointer;
+  background-color: #f0f0f0;
+  color: var(--cor-texto2);
 }
 
 .send-btn {
-  background-color: greenyellow;
-  border: none;
-  padding: 8px;
-  border-radius: 4px;
-  cursor: pointer;
+  background-color: var(--cor-fundo);
+  color: var(--cor-texto);
 }
 
-.question-number {
-  font-size: 20px;
-  margin-bottom: 40px;
+.skip-btn:hover,
+.send-btn:hover {
+  transform: scale(1.03);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
-.question {
-  font-size: 20px;
-  margin-bottom: 40px;
-}
-
-.answers form {
+.section-timer {
   display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.disabled {
-  background-color: rgba(0, 0, 0, 1);
-  height: 520px;
-  width: 400px;
-  position: absolute;
-  top: 112px;
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
   justify-content: center;
-  font-size: 24px;
-  color: white;
+  align-items: center;
+  margin: 40px 0;
+}
+
+.timer-out {
+  background-color: var(--cor-timer);
+  border-radius: 50%;
+  padding: 10px;
+  animation: pulse 2s infinite;
+}
+
+.timer-in {
+  background-color: var(--cor-jogadores);
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+#time {
+  font-size: 2.5em;
+  font-weight: 700;
+  color: var(--cor-texto2);
 }
 
 .game-start {
-  background-color: rgba(0, 0, 0, 0.8);
-  position: absolute;
-  width: 100vw;
-  height: 100vh;
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.9);
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 1;
+  z-index: 100;
 }
 
 .start-box {
-  width: 500px;
-  height: 300px;
-  background-color: white;
-  border-radius: 24px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-evenly;
-  padding: 12px;
+  background-color: var(--cor-jogadores);
+  padding: 50px;
+  border-radius: 30px;
+  text-align: center;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
 }
 
 .start-box h3 {
+  color: var(--cor-texto2);
+  margin-bottom: 30px;
   font-size: 32px;
+  font-weight: 700;
 }
 
-.start-box button {
+#start-button {
+  padding: 18px 36px;
+  background-color: var(--cor-fundo);
+  color: var(--cor-texto);
   border: none;
-  padding: 8px;
-  border-radius: 8px;
-  width: 100%;
-  background-color: rgb(0, 255, 0);
-  font-size: 16px;
+  border-radius: 50px;
   cursor: pointer;
+  font-size: 1.3em;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+}
+
+#start-button:hover {
+  transform: scale(1.03);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
 .hidden {
   display: none;
+}
+
+.disabled {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.96);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  border-radius: 20px;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.disabled span {
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 20px;
+  }
+
+  .player-container {
+    padding: 20px;
+  }
+
+  .player-title h2 {
+    font-size: 24px;
+  }
+
+  .skip-btn,
+  .send-btn {
+    padding: 12px 24px;
+    font-size: 1em;
+  }
+
+  .timer-in {
+    width: 80px;
+    height: 80px;
+  }
+
+  #time {
+    font-size: 2em;
+  }
+
+  .start-box {
+    padding: 40px;
+  }
+
+  .start-box h3 {
+    font-size: 28px;
+  }
+
+  #start-button {
+    padding: 15px 30px;
+    font-size: 1.1em;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 15px;
+  }
+
+  .player-container {
+    padding: 15px;
+  }
+
+  .player-title h2 {
+    font-size: 22px;
+  }
+
+  .skip-btn,
+  .send-btn {
+    padding: 10px 20px;
+    font-size: 0.9em;
+  }
+
+  .timer-in {
+    width: 60px;
+    height: 60px;
+  }
+
+  #time {
+    font-size: 1.8em;
+  }
+
+  .start-box {
+    padding: 30px;
+  }
+
+  .start-box h3 {
+    font-size: 24px;
+  }
+
+  #start-button {
+    padding: 12px 24px;
+    font-size: 1em;
+  }
 }
