@@ -38,8 +38,8 @@
                         <label for="nome_jogador2">Insira o nome do jogador 2:</label>
                         <input type="text" id="nome_jogador2" name="nome_jogador2" oninput="document.getElementById('player2').innerHTML = this.value;">
                         <label for="total_perguntas">Escolha o número de perguntas (máximo 40):</label>
-                        <input type="number" id="num-perguntas" name="total_perguntas" min="1" max="40" value="10">
-                        <button type="button" onClick="start(), updateProgressBar(1, document.getElementById('num-perguntas').value)" id="start-button">Começar</button>
+                        <input type="number" id="total_perguntas" name="total_perguntas" min="1" max="40" value="10">
+                        <button type="button" onClick="start(), updateProgressBar(1, document.getElementById('total_perguntas').value)" id="start-button">Começar</button>
                     </form>
                 </div>
                 </div>
