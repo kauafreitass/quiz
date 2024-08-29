@@ -336,7 +336,6 @@ body {
 .progress {
   width: 50%; /* Exemplo de largura */
   height: 100%;
-  background-color: var(--cor-jogadores);
   border-radius: 10px;
   transition: width 0.3s ease;
 }

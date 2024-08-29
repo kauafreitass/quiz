@@ -15,6 +15,3 @@ function skipToAnotherPlayer() {
   body.classList.toggle("green");
   body.classList.toggle("pink");
 }
-
-function disableButton1() {
-}
