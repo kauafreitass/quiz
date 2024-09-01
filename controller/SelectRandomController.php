@@ -1,9 +1,10 @@
-<?php 
+<?php
 
-require_once 'C:\aluno2\xampp\htdocs\quiz\model\SelectRandomModel.php';
+require_once 'C:\xampp\htdocs\quiz\model\SelectRandomModel.php';
 
-class SelectRandom {
-    
+class SelectRandom
+{
+
     public $selectRandomModel;
 
     public function __construct($pdo)
@@ -11,7 +12,8 @@ class SelectRandom {
         $this->selectRandomModel = new SelectRandomModel($pdo);
     }
 
-    public function selectAnswerRandom() {
+    public function selectAnswerRandom()
+    {
         $this->selectRandomModel->selectAnswerRandom();
     }
 }

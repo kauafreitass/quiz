@@ -1,20 +1,22 @@
     <?php
     session_start();
-    require_once 'C:\aluno2\xampp\htdocs\quiz\config.php';
-    require_once 'C:\aluno2\xampp\htdocs\quiz\controller\SelectRandomController.php';
+    require_once 'C:\xampp\htdocs\quiz\config.php';
+    require_once 'C:\xampp\htdocs\quiz\controller\SelectRandomController.php';
 
     // if (isset(($_SESSION["jogando"]))) {
-    // ?>
-    //     <script src="../../js/start.js">
-    //         start();
-    //     </script>
-    // <?php
-    // } else {
-    //     $sessao = $_SESSION["jogando"];
-    //     echo $sessao;
-    // };
-
+    // 
     ?>
+    // <script src="../../js/start.js">
+//         start();
+//     
+    </script>
+    // <?php
+        // } else {
+        //     $sessao = $_SESSION["jogando"];
+        //     echo $sessao;
+        // };
+
+        ?>
 
     <!DOCTYPE html>
     <html lang="pt-br">
@@ -34,59 +36,66 @@
                     <h3>Deseja começar o jogo?</h3>
                     <form id="start-form" method="get" action="<?= $_SERVER['PHP_SELF'] ?>">
                         <label for="nome_jogador1">Insira o nome do jogador 1:</label>
-                        <input type="text" id="nome-jogador1" name="nome_jogador1" maxlength="20" oninput="document.getElementById('player1').innerHTML = this.value;">
+                        <input type="text" id="nome-jogador1" name="nome_jogador1" maxlength="20"
+                            oninput="document.getElementById('player1').innerHTML = this.value;">
                         <label for="nome_jogador2">Insira o nome do jogador 2:</label>
-                        <input type="text" id="nome_jogador2" name="nome_jogador2" maxlength="20" oninput="document.getElementById('player2').innerHTML = this.value;">
+                        <input type="text" id="nome_jogador2" name="nome_jogador2" maxlength="20"
+                            oninput="document.getElementById('player2').innerHTML = this.value;">
                         <label for="total_perguntas">Escolha o número de perguntas (máximo 40):</label>
                         <input type="number" id="total_perguntas" name="total_perguntas" min="1" max="40" value="10">
-                        <button type="button" onClick="start(), updateProgressBar(1, document.getElementById('total_perguntas').value)" id="start-button">Começar</button>
+                        <button type="button"
+                            onClick="start(), updateProgressBar(1, document.getElementById('total_perguntas').value)"
+                            id="start-button">Começar</button>
                     </form>
                 </div>
+            </div>
+            <div class="player-container">
+                <div class="disabled" id="disabled-div-1">
+                    <span id="disabled-text-1">Aguarde a sua vez!</span>
                 </div>
-                <div class="player-container">
-                    <div class="disabled" id="disabled-div-1">
-                        <span id="disabled-text-1">Aguarde a sua vez!</span>
+                <div class="player-title">
+                    <h2 id="player1">Jogador 1</h2>
+                </div>
+                <div class="jogador1">
+                    <div class="question-number">
+                        <h4>Questão #1</h4>
                     </div>
-                    <div class="player-title">
-                        <h2 id="player1">Jogador 1</h2>
+                    <div class="question">
+                        <h5>Qual é a capital do Brasil?</h5>
                     </div>
-                    <div class="jogador1">
-                        <div class="question-number">
-                            <h4>Questão #1</h4>
-                        </div>
-                        <div class="question">
-                            <h5>Qual é a capital do Brasil?</h5>
-                        </div>
-                        <div class="answers">
-                            <form method="post">
-                                <div class="answer1">
-                                    <input type="radio" id="answer1" name="answer" value="1">
-                                    <label for="answer1">Rio de Janeiro</label>
-                                </div>
-                                <div class="answer2">
-                                    <input type="radio" id="answer2" name="answer" value="2">
-                                    <label for="answer2">São Paulo</label>
-                                </div>
-                                <div class="answer3">
-                                    <input type="radio" id="answer3" name="answer" value="3">
-                                    <label for="answer3">Brasília</label>
-                                </div>
-                                <div class="answer4">
-                                    <input type="radio" id="answer4" name="answer" value="4">
-                                    <label for="answer4">Salvador</label>
-                                </div>
+                    <div class="answers">
+                        <form method="post">
+                            <div class="answer1">
+                                <input type="radio" id="answer1" name="answer" value="1">
+                                <label for="answer1">Rio de Janeiro</label>
+                            </div>
+                            <div class="answer2">
+                                <input type="radio" id="answer2" name="answer" value="2">
+                                <label for="answer2">São Paulo</label>
+                            </div>
+                            <div class="answer3">
+                                <input type="radio" id="answer3" name="answer" value="3">
+                                <label for="answer3">Brasília</label>
+                            </div>
+                            <div class="answer4">
+                                <input type="radio" id="answer4" name="answer" value="4">
+                                <label for="answer4">Salvador</label>
+                            </div>
 
-                        </div>
                     </div>
-                    <div class="options-btns">
-                        <div>
-                            <button class="skip-btn" onclick="restartTimer(), skipToAnotherPlayer()"
-                                id="skip-btn" type="button">Pular</button>
-                        </div>
-                        <button class="send-btn pink" type="submit">Enviar</button>
-                    </div>
-                    </form>
                 </div>
+                <div class="progress-bar">
+                    <div class="progress progress-pink" id="progress-bar-1"></div>
+                </div>
+                <div class="options-btns">
+                    <div>
+                        <button class="skip-btn" onclick="restartTimer(), skipToAnotherPlayer()" id="skip-btn"
+                            type="button">Pular</button>
+                    </div>
+                    <button class="send-btn pink" type="submit">Enviar</button>
+                </div>
+                </form>
+            </div>
             </section>
 
             <section class="section-timer">
@@ -134,8 +143,8 @@
                     </div>
                     <div class="options-btns">
                         <div>
-                            <button class="skip-btn" onclick="restartTimer(), skipToAnotherPlayer()"
-                                id="skip-btn" type="button">Pular</button>
+                            <button class="skip-btn" onclick="restartTimer(), skipToAnotherPlayer()" id="skip-btn"
+                                type="button">Pular</button>
                         </div>
                         <button class="send-btn green" type="submit">Enviar</button>
                         </form>

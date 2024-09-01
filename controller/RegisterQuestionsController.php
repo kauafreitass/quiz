@@ -1,6 +1,6 @@
 <?php
 
-require_once 'C:\aluno2\xampp\htdocs\quiz\model\RegisterQuestionsModel.php';
+require_once 'C:\xampp\htdocs\quiz\model\RegisterQuestionsModel.php';
 
 class RegisterQuestionsController
 {
