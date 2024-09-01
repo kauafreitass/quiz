@@ -2,9 +2,9 @@
 
 
 require_once 'C:\aluno2\xampp\htdocs\quiz\config.php';
-require_once 'C:\aluno2\xampp\htdocs\quiz\controller\RegisterQuestionsController.php';
+require_once 'C:\aluno2\xampp\htdocs\quiz\controller\QuizController.php';
 
-$registerQuestionsController = new RegisterQuestionsController($pdo);
+$registerQuestionsController = new QuizController($pdo);
 
 // $registerQuestionsController->ChangeTotalQuestions();
 

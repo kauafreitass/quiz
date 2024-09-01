@@ -1,13 +1,13 @@
 <?php
+require_once 'C:\aluno2\xampp\htdocs\quiz\model\QuizModel.php';
 
-require_once 'C:\xampp\htdocs\meu_quiz\models\QuizModel.php';
-
-class QuizController {
-    private $model;
-
+class QuizController
+{
+    private $quizModel;
     public function __construct() {
         session_start(); // Iniciar sessão para armazenar progresso e pontuação
-        $this->model = new QuizModel();
+        $_SESSION['started'] = true;
+        $this->quizModel = new QuizModel();
 
         // Inicializar variáveis de sessão se não estiverem definidas
         if (!isset($_SESSION['current_question'])) {
@@ -27,24 +27,26 @@ class QuizController {
         }
     }
 
-    // Exibir a tela de seleção de quantidade de perguntas
     public function showQuestionSelection() {
-        require 'C:\xampp\htdocs\meu_quiz\views\quiz\question_selection.php';
+        require 'C:\aluno2\xampp\htdocs\quiz\view\quiz\question_selection.php';
     }
 
-    // Iniciar o quiz com a quantidade de perguntas selecionada
+    public function registerQuestions($tipo, $texto_pergunta, $resposta_correta, $opcao2, $opcao3, $opcao4)
+    {
+        $this->quizModel->registerQuestions($tipo, $texto_pergunta, $resposta_correta, $opcao2, $opcao3, $opcao4);
+    }
+
     public function start() {
         // Obter a quantidade de perguntas selecionada pelo usuário
-        $_SESSION['total_questions'] = isset($_POST['question_count']) ? intval($_POST['question_count']) : 5;
+        $_SESSION['total_questions'] = isset($_GET['total_perguntas']) ? intval($_GET['total_perguntas']) : 5;
         $_SESSION['current_question'] = 0; // Iniciar na primeira pergunta
         $_SESSION['score'] = 0; // Iniciar pontuação em zero
 
         // Obter perguntas aleatórias com base na quantidade definida
-        $_SESSION['questions'] = $this->model->getRandomQuestions($_SESSION['total_questions']);
+        $_SESSION['questions'] = $this->quizModel->getRandomQuestions($_SESSION['total_questions']);
         $this->nextQuestion();
     }
 
-    // Exibir a próxima pergunta
     public function nextQuestion() {
         $questions = $_SESSION['questions'];
         $currentQuestionIndex = $_SESSION['current_question'];
@@ -52,13 +54,13 @@ class QuizController {
         if ($currentQuestionIndex < $_SESSION['total_questions']) {
             $currentQuestion = $questions[$currentQuestionIndex];
             $_SESSION['current_question']++;
-            require 'C:\xampp\htdocs\meu_quiz\views\quiz\question.php';
+            require 'C:\aluno2\xampp\htdocs\quiz\view\quiz\question.php';
         } else {
-            $this->showResult();
+            $this->result();
         }
     }
 
-    public function validateAnswer() {
+    public function answerIsCorrect() {
         if (!isset($_POST['questionId']) || !isset($_POST['answer'])) {
             header('Location: index.php?action=next');
             exit();
@@ -66,8 +68,7 @@ class QuizController {
 
         $questionId = intval($_POST['questionId']);
         $answer = $_POST['answer'];
-
-        $correct = $this->model->checkAnswer($questionId, $answer);
+        $correct = $this->quizModel->verifyAnswer($questionId, $answer);
 
         if ($correct) {
             $_SESSION['score'] += 1;
@@ -76,15 +77,13 @@ class QuizController {
         $this->nextQuestion();
     }
 
-    public function showResult() {
+    public function result() {
         $score = $_SESSION['score'];
-        require 'C:\xampp\htdocs\meu_quiz\views\quiz\result.php';
+        require 'C:\aluno2\xampp\htdocs\quiz\view\quiz\result.php';
 
         // Certifique-se de que a sessão foi iniciada antes de tentar destruí-la
         if (session_status() === PHP_SESSION_ACTIVE) {
             session_destroy();
         }
     }
-
 }
-?>

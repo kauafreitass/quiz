@@ -1,4 +1,3 @@
-
 function start() {
   const button = document.getElementById("box");
   button.classList.add("hidden");

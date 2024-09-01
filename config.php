@@ -1,16 +1,28 @@
 <?php
 
-//configurações básicas 
+// Configurações básicas 
 
-$host = 'localhost';
-$dbname = 'quiz';
-$username = 'root';
-$password = '';
+class Config
+{
+    private $host = 'localhost';
+    private $dbname = 'quiz';
+    private $username = 'root';
+    private $password = '';
 
-// conexão PDO 
-try {
-    $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $password);
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
-    die("Erro ao conectar:" . $e->getMessage());
+    public $pdo;
+
+    // Conexão PDO 
+    public function getConnection()
+    {
+        $this->pdo = null;
+
+        try {
+            $this->pdo = new PDO("mysql:host=" . $this->host . ";dbname=" . $this->dbname, $this->username, $this->password);
+            $this->pdo->exec("set names utf8");
+        } catch (PDOException $exception) {
+            echo "Connection error: " . $exception->getMessage();
+        }
+
+        return $this->pdo;
+    }
 }
