@@ -1,6 +1,7 @@
-<?php 
+<?php
 
-class SelectRandomModel {
+class SelectRandomModel
+{
 
     private $pdo;
 
@@ -9,10 +10,11 @@ class SelectRandomModel {
         $this->pdo = $pdo;
     }
 
-    public function selectAnswerRandom() {
-        $offset = floor(rand()); 
-        $sql = "SELECT * FROM quiz ORDER BY RAND() LIMIT 1 OFFSET ?";
-        $stmt = $this->pdo->query($sql);
-        $stmt->execute([$offset]);
+    public function getRandomQuestions($qty)
+    {
+        $stmt = $this->pdo->prepare("SELECT * FROM quiz ORDER BY RAND() LIMIT :limit");
+        $stmt->bindParam(':qty', $qty, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 }
