@@ -3,15 +3,14 @@ require_once 'C:\aluno2\xampp\htdocs\quiz\config.php';
 require_once 'C:\aluno2\xampp\htdocs\quiz\controller\QuizController.php';
 
 if ($_SESSION['started'] = true) {
-    ?>
+?>
     <script>
         function startTimer() {
             Timer(15, display);
         }
     </script>
-    <?php
-}
-;
+<?php
+};
 
 $controller = new QuizController();
 
@@ -60,15 +59,7 @@ if (method_exists($controller, $action)) {
     <main class="card-players">
         <!-- Jogador 1 -->
 
-        <section class="section-timer">
-            <div class="timer-out">
-                <div class="timer-in">
-                    <span id="time">15</span>
-                </div>
-            </div>
-        </section>
-
-        <section class="players">
+        <section class="players hidden">
             <div class="player-container">
                 <div class="disabled" id="disabled-div-2">
                     <span id="disabled-text-2">Aguarde a sua vez!</span>
@@ -76,43 +67,49 @@ if (method_exists($controller, $action)) {
                 <div class="player-title">
                     <h2 id="player2">Jogador 2</h2>
                 </div>
-                <div class="jogador1">
+                <div class="jogador2">
                     <div class="question-number">
-                        <h4>Questão #2</h4>
+                        <h4>Questão #1</h4>
                     </div>
                     <div class="question">
-                        <h5>Quem pintou a Mona Lisa?</h5>
+                        <h5>Qual é a capital do Brasil?</h5>
                     </div>
                     <div class="answers">
-                        <form method="post" action="<?= $_SERVER['PHP_SELF'] ?>">
+                        <form method="post" action="index.php?action=answerIsCorrectPlayer2">
                             <div class="answer1">
-                                <input type="radio" id="player2_answer1" name="player2_answer" value="1">
-                                <label for="player2_answer1">Pablo Picasso</label>
+                                <input type="radio" id="option1" name="answer"
+                                    value="<?php echo $currentQuestionPlayer2['opcao_1']; ?>">
+                                <label for="answer1">São Paulo</label>
                             </div>
                             <div class="answer2">
-                                <input type="radio" id="player2_answer2" name="player2_answer" value="2">
-                                <label for="player2_answer2">Vincent van Gogh</label>
+                                <input type="radio" id="option2" name="answer"
+                                    value="<?php echo $currentQuestionPlayer2['opcao_2']; ?>">
+                                <label for="answer2">Brasília</label>
                             </div>
                             <div class="answer3">
-                                <input type="radio" id="player2_answer3" name="player2_answer" value="3">
-                                <label for="player2_answer3">Leonardo da Vinci</label>
+                                <input type="radio" id="option3" name="answer"
+                                    value="<?php echo $currentQuestionPlayer2['opcao_3']; ?>">
+                                <label for="answer3">Rio de Janeiro</label>
                             </div>
                             <div class="answer4">
-                                <input type="radio" id="player2_answer4" name="player2_answer" value="4">
-                                <label for="player2_answer4">Michelangelo</label>
+                                <input type="radio" id="option4" name="answer"
+                                    value="<?php echo $currentQuestionPlayer2['opcao_4']; ?>">
+                                <label for="answer4">Salvador</label>
                             </div>
                     </div>
                 </div>
                 <div class="options-btns">
                     <div>
-                        <button class="skip-btn" onclick="restartTimer(), skipToAnotherPlayer()" id="skip-btn"
-                            type="button">Pular</button>
+                        <button class="skip-btn" onclick="restartTimer()" id="skip-btn" type="submit"
+                            value="skippedQuestionPlayer2">Pular</button>
                     </div>
                     <button class="send-btn green" type="submit">Enviar</button>
                     </form>
                 </div>
             </div>
         </section>
+
+
     </main>
 
     <script src="../../js/start.js"></script>
