@@ -77,6 +77,7 @@ class QuizController
             $_SESSION['current_question']++;
             require 'C:\aluno2\xampp\htdocs\quiz\view\quiz\question.php';
         } else {
+            $_SESSION['player1Finished'] = true;
             $this->result();
         }
     }

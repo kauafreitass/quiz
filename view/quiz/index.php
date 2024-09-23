@@ -128,7 +128,18 @@ if (method_exists($controller, $action)) {
             </div>
         </section>
 
-        <section class="players hidden">
+
+        <?php
+        if (!isset($_SESSION['player1Finished'])) {
+            echo '
+                        <section class="section-timer">
+            <div class="timer-out">
+                <div class="timer-in">
+                    <span id="time">15</span>
+                </div>
+            </div>
+        </section>
+                    <section class="players">
             <div class="player-container">
                 <div class="disabled" id="disabled-div-2">
                     <span id="disabled-text-2">Aguarde a sua vez!</span>
@@ -147,22 +158,22 @@ if (method_exists($controller, $action)) {
                         <form method="post" action="index.php?action=answerIsCorrectPlayer2">
                             <div class="answer1">
                                 <input type="radio" id="option1" name="answer"
-                                    value="<?php echo $currentQuestionPlayer2['opcao_1']; ?>">
+                                    value="<?php echo $currentQuestionPlayer2["opcao_1"]; ?>">
                                 <label for="answer1">São Paulo</label>
                             </div>
                             <div class="answer2">
                                 <input type="radio" id="option2" name="answer"
-                                    value="<?php echo $currentQuestionPlayer2['opcao_2']; ?>">
+                                    value="<?php echo $currentQuestionPlayer2["opcao_2"]; ?>">
                                 <label for="answer2">Brasília</label>
                             </div>
                             <div class="answer3">
                                 <input type="radio" id="option3" name="answer"
-                                    value="<?php echo $currentQuestionPlayer2['opcao_3']; ?>">
+                                    value="<?php echo $currentQuestionPlayer2["opcao_3"]; ?>">
                                 <label for="answer3">Rio de Janeiro</label>
                             </div>
                             <div class="answer4">
                                 <input type="radio" id="option4" name="answer"
-                                    value="<?php echo $currentQuestionPlayer2['opcao_4']; ?>">
+                                    value="<?php echo $currentQuestionPlayer2["opcao_4"]; ?>">
                                 <label for="answer4">Salvador</label>
                             </div>
                     </div>
@@ -177,7 +188,9 @@ if (method_exists($controller, $action)) {
                 </div>
             </div>
         </section>
-
+        ';
+        }
+        ?>
 
     </main>
 
