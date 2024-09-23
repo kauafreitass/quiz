@@ -15,8 +15,12 @@ class QuizController
             $_SESSION['current_question'] = 0;
         }
 
-        if (!isset($_SESSION['score'])) {
-            $_SESSION['score'] = 0;
+        if (!isset($_SESSION['scorePlayer1'])) {
+            $_SESSION['scorePlayer1'] = 0;
+        }
+
+        if (!isset($_SESSION['scorePlayer2'])) {
+            $_SESSION['scorePlayer2'] = 0;
         }
 
         if (!isset($_SESSION['total_questions'])) {
@@ -92,37 +96,56 @@ class QuizController
         }
     }
 
-    public function answerIsCorrect()
+    public function answerIsCorrect($questionId, $answer)
     {
         if (!isset($_POST['questionId']) || !isset($_POST['answer'])) {
             header('Location: index.php?action=nextQuestion');
             exit();
         }
 
-        $questionId = intval($_POST['questionId']);
-        $answer = $_POST['answer'];
         $correct = $this->quizModel->verifyAnswer($questionId, $answer);
 
         if ($correct) {
-            $_SESSION['scorePlayer1'] += 1;
+            $scorePlayer1 = $_SESSION['scorePlayer1']++;
+            $scorePlayer1 += 1;
+            ?>
+            <script>
+                alert('acertou');
+            </script>
+            <?php
         }
 
         $this->nextQuestion();
     }
 
-    public function answerIsCorrectPlayer2()
+    public function answerIsCorrectPlayer2($questionId, $answer)
     {
         if (!isset($_POST['questionId']) || !isset($_POST['answer'])) {
             header('Location: index.php?action=nextQuestionPlayer2');
+            ?>
+            <script>
+                alert('naoexiste');
+            </script>
+            <?php
             exit();
         }
 
-        $questionId = intval($_POST['questionId']);
-        $answer = $_POST['answer'];
         $correct = $this->quizModel->verifyAnswer($questionId, $answer);
 
         if ($correct) {
-            $_SESSION['scorePlayer2'] += 1;
+            $scorePlayer2 = $_SESSION['scorePlayer2']++;
+            $scorePlayer2++;
+            ?>
+            <script>
+                alert('acertouu');
+            </script>
+            <?php
+        } else {
+            ?>
+            <script>
+                alert('errou');
+            </script>
+            <?php
         }
 
         $this->nextQuestionPlayer2();

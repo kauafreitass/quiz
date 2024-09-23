@@ -2,7 +2,15 @@
 require_once 'C:\aluno2\xampp\htdocs\quiz\config.php';
 require_once 'C:\aluno2\xampp\htdocs\quiz\controller\QuizController.php';
 
-if ($_SESSION['started'] = true) {
+
+if (isset($_SESSION['finished'])) {
+    $_SESSION['scorePlayer1'] = 0;
+    $_SESSION['scorePlayer2'] = 0;
+    session_unset();
+    session_destroy();
+}
+
+if (isset($_SESSION['started'])) {
 ?>
     <script>
         function startTimer() {
@@ -17,7 +25,7 @@ $controller = new QuizController();
 $action = isset($_GET['action']) ? $_GET['action'] : 'showQuestionSelection';
 
 if (method_exists($controller, $action)) {
-    if ($action == 'answerIsCorrect') {
+    if ($action === 'answerIsCorrect') {
         // Verifique se os dados necessários estão presentes antes de usá-los
         $questionId = isset($_POST['questionId']) ? $_POST['questionId'] : null;
         $answer = isset($_POST['answer']) ? $_POST['answer'] : null;
@@ -27,6 +35,17 @@ if (method_exists($controller, $action)) {
         } else {
             // Se faltarem dados, redirecione para a próxima pergunta ou reinicie o quiz
             $controller->nextQuestion();
+        }
+    } elseif ($action === 'answerIsCorrectPlayer2') {
+        // Verifique se os dados necessários estão presentes antes de usá-los
+        $questionId = isset($_POST['questionId']) ? $_POST['questionId'] : null;
+        $answer = isset($_POST['answer']) ? $_POST['answer'] : null;
+
+        if ($questionId !== null && $answer !== null) {
+            $controller->$action($questionId, $answer);
+        } else {
+            // Se faltarem dados, redirecione para a próxima pergunta ou reinicie o quiz
+            $controller->nextQuestionPlayer2();
         }
     } else {
         $controller->$action();
@@ -58,6 +77,56 @@ if (method_exists($controller, $action)) {
 
     <main class="card-players">
         <!-- Jogador 1 -->
+
+        <section class="players hidden">
+            <div class="player-container">
+                <div class="disabled" id="disabled-div-2">
+                    <span id="disabled-text-2">Aguarde a sua vez!</span>
+                </div>
+                <div class="player-title">
+                    <h2 id="player1">Jogador 1</h2>
+                </div>
+                <div class="jogador1">
+                    <div class="question-number">
+                        <h4>Questão #1</h4>
+                    </div>
+                    <div class="question">
+                        <h5>Qual é a capital do Brasil?</h5>
+                    </div>
+                    <div class="answers">
+                        <form method="post" action="index.php?action=answerIsCorrect">
+                            <div class="answer1">
+                                <input type="radio" id="option1" name="answer"
+                                    value="<?php echo $currentQuestion['opcao_1']; ?>">
+                                <label for="answer1">São Paulo</label>
+                            </div>
+                            <div class="answer2">
+                                <input type="radio" id="option2" name="answer"
+                                    value="<?php echo $currentQuestion['opcao_2']; ?>">
+                                <label for="answer2">Brasília</label>
+                            </div>
+                            <div class="answer3">
+                                <input type="radio" id="option3" name="answer"
+                                    value="<?php echo $currentQuestion['opcao_3']; ?>">
+                                <label for="answer3">Rio de Janeiro</label>
+                            </div>
+                            <div class="answer4">
+                                <input type="radio" id="option4" name="answer"
+                                    value="<?php echo $currentQuestion['opcao_4']; ?>">
+                                <label for="answer4">Salvador</label>
+                            </div>
+                    </div>
+                </div>
+                <div class="options-btns">
+                    <div>
+                        <button class="skip-btn" onclick="restartTimer()" id="skip-btn" type="submit"
+                            value="skippedQuestion">Pular</button>
+                    </div>
+                    <button class="send-btn pink" type="submit">Enviar</button>
+                    </form>
+                </div>
+            </div>
+        </section>
 
         <section class="players hidden">
             <div class="player-container">

@@ -3,12 +3,13 @@ require_once 'C:\aluno2\xampp\htdocs\quiz\controller\QuizController.php';
 
 if (isset($_POST['skippedQuestionPlayer2'])) {
     $controller = new QuizController();
-    $controller->nextQuestion();
+    $controller->nextQuestionPlayer2();
 }
 
 ?>
 
-<section class="players">
+<?php if (isset($currentQuestionPlayer2)): ?>
+    <section class="players">
     <div class="player-container">
         <div class="" id="disabled-div-2">
             <span id="disabled-text-2">Aguarde a sua vez!</span>
@@ -27,22 +28,22 @@ if (isset($_POST['skippedQuestionPlayer2'])) {
                 <form method="post" action="index.php?action=answerIsCorrectPlayer2">
                     <div class="answer1">
                         <input type="radio" id="option1" name="answer"
-                            value="<?php echo $currentQuestionPlayer2['opcao_1']; ?>">
+                            value="A">
                         <label for="answer1"><?php echo $currentQuestionPlayer2['opcao_1']; ?></label>
                     </div>
                     <div class="answer2">
                         <input type="radio" id="option2" name="answer"
-                            value="<?php echo $currentQuestionPlayer2['opcao_2']; ?>">
+                            value="B">
                         <label for="answer2"><?php echo $currentQuestionPlayer2['opcao_2']; ?></label>
                     </div>
                     <div class="answer3">
                         <input type="radio" id="option3" name="answer"
-                            value="<?php echo $currentQuestionPlayer2['opcao_3']; ?>">
+                            value="C">
                         <label for="answer3"><?php echo $currentQuestionPlayer2['opcao_3']; ?></label>
                     </div>
                     <div class="answer4">
                         <input type="radio" id="option4" name="answer"
-                            value="<?php echo $currentQuestionPlayer2['opcao_4']; ?>">
+                            value="D">
                         <label for="answer4"><?php echo $currentQuestionPlayer2['opcao_4']; ?></label>
                     </div>
             </div>
@@ -57,3 +58,6 @@ if (isset($_POST['skippedQuestionPlayer2'])) {
         </div>
     </div>
 </section>
+<?php else: ?>
+    <p>Não há mais perguntas disponíveis.</p>
+<?php endif; ?>

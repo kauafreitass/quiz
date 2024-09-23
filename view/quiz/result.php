@@ -1,8 +1,5 @@
 <?php
-
-if (!isset($scorePlayer1)) {
-    $scorePLayer1 = isset($_SESSION['scorePlayer1']) ? $_SESSION['scorePlayer1'] : 0;
-}
+    $scorePlayer1 = $_SESSION['scorePlayer1'];
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -33,8 +30,3 @@ if (!isset($scorePlayer1)) {
                 </div>
             </div>
         </section>
-
-    </main>
-</body>
-
-</html>
