@@ -403,6 +403,24 @@ body {
   background-color: var(--cor-botao-hover);
 }
 
+.playagain-btn {
+  width: 200;
+  height: 60px;
+  border: none;
+  border-radius: 8px;
+  padding: 12px;
+  font-size: 18px;
+  position: relative;
+  cursor: pointer;
+  top: 100px;
+  transition: all 0.3s ease;
+}
+
+.playagain-btn:hover {
+  transform: scale(1.05);
+}
+
+
 
 @media (max-width: 768px) {
   .container {

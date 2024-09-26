@@ -8,12 +8,14 @@ if (!isset($scorePlayer1)) {
 
 <body class="pink">
 
-    <main style="margin-left: 225px; display: flex; justify-content: center; gap: 200px;">
+    <main style="margin-left: 25px ;display: flex; justify-content: center; gap: 200px;">
 
         <div class="result-container" style="text-align: center; margin-top: 50px; width: 400px;">
             <h2>Quiz Concluído!</h2>
             <p>Sua pontuação final é: <strong><?php echo htmlspecialchars($scorePlayer1, ENT_QUOTES, 'UTF-8'); ?></strong> ponto(s).</p>
         </div>
+
+        <button class="playagain-btn green" onclick="redirectToIndex()">Jogar novamente</button>
 
         <?php
 
@@ -28,4 +30,11 @@ if (!isset($scorePlayer1)) {
         </div>
 
     </main>
+
 </body>
+
+<script>
+    function redirectToIndex() {
+        window.location.href = "index.php";
+    }
+</script>

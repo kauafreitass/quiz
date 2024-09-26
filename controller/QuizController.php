@@ -117,11 +117,6 @@ class QuizController
         if ($correct) {
             $scorePlayer1 = $_SESSION['scorePlayer1']++;
             $scorePlayer1 += 1;
-            ?>
-            <script>
-                alert('acertou');
-            </script>
-            <?php
         }
 
         $this->nextQuestion();
@@ -131,11 +126,6 @@ class QuizController
     {
         if (!isset($_POST['questionId']) || !isset($_POST['answer'])) {
             header('Location: index.php?action=nextQuestionPlayer2');
-            ?>
-            <script>
-                alert('naoexiste');
-            </script>
-            <?php
             exit();
         }
 
@@ -144,17 +134,6 @@ class QuizController
         if ($correct) {
             $scorePlayer2 = $_SESSION['scorePlayer2']++;
             $scorePlayer2++;
-            ?>
-            <script>
-                alert('acertouu');
-            </script>
-            <?php
-        } else {
-            ?>
-            <script>
-                alert('errou');
-            </script>
-            <?php
         }
 
         $this->nextQuestionPlayer2();

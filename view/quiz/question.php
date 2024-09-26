@@ -39,7 +39,7 @@ if (isset($_POST['skippedQuestion'])) {
                         <input type="hidden" name="questionId" value="<?php echo $currentQuestion['id']; ?>">
                         <div class="answer1">
                             <input type="radio" id="option1" name="answer"
-                                value="A">
+                                value="A" required>
                             <label for="answer1"><?php echo $currentQuestion['opcao_1']; ?></label>
                         </div>
                         <div class="answer2">
