@@ -425,7 +425,6 @@ body {
   font-size: 80px;
   gap: 80px;
   background-color: var(--cor-card);
-  color: var(--cor-texto2);
   border-radius: 20px;
   position: relative;
   top: 50px;
@@ -436,6 +435,7 @@ body {
   text-align: center;
   border-radius: 40px;
   margin: 20px;
+  color: var(--cor-texto2);
 }
 
 

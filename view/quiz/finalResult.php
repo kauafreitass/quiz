@@ -23,10 +23,10 @@ if (!isset($scorePlayer1)) {
                 <h4>O jogador 1 venceu!</h4>
             </div>
                     ';
-            } elseif ($scorePlayer2 < $scorePlayer1) {
+            } elseif ($scorePlayer2 > $scorePlayer1) {
                 echo '
                 <div class="winner-text">
-                <h4>O jogador 1 venceu!</h4>
+                <h4>O jogador 2 venceu!</h4>
             </div>
             ';
             } elseif ($scorePlayer1 == $scorePlayer2) {
