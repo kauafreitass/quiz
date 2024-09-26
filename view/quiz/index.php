@@ -2,7 +2,6 @@
 require_once 'C:\aluno2\xampp\htdocs\quiz\config.php';
 require_once 'C:\aluno2\xampp\htdocs\quiz\controller\QuizController.php';
 
-
 if (isset($_SESSION['finished'])) {
     $_SESSION['scorePlayer1'] = 0;
     $_SESSION['scorePlayer2'] = 0;
@@ -73,12 +72,14 @@ if (method_exists($controller, $action)) {
     <title>Quiz Game</title>
 </head>
 
-<body class="pink">
+<body class="pink" onload="startTimer()">
 
     <main class="card-players">
         <!-- Jogador 1 -->
-
-        <section class="players hidden">
+        <?php
+        if (!isset($_SESSION['started'])) {
+            echo '
+        <section class="players">
             <div class="player-container">
                 <div class="disabled" id="disabled-div-2">
                     <span id="disabled-text-2">Aguarde a sua vez!</span>
@@ -97,22 +98,22 @@ if (method_exists($controller, $action)) {
                         <form method="post" action="index.php?action=answerIsCorrect">
                             <div class="answer1">
                                 <input type="radio" id="option1" name="answer"
-                                    value="<?php echo $currentQuestion['opcao_1']; ?>">
+                                    value="<?php echo $currentQuestion["opcao_1"]; ?>">
                                 <label for="answer1">São Paulo</label>
                             </div>
                             <div class="answer2">
                                 <input type="radio" id="option2" name="answer"
-                                    value="<?php echo $currentQuestion['opcao_2']; ?>">
+                                    value="<?php echo $currentQuestion["opcao_2"]; ?>">
                                 <label for="answer2">Brasília</label>
                             </div>
                             <div class="answer3">
                                 <input type="radio" id="option3" name="answer"
-                                    value="<?php echo $currentQuestion['opcao_3']; ?>">
+                                    value="<?php echo $currentQuestion["opcao_3"]; ?>">
                                 <label for="answer3">Rio de Janeiro</label>
                             </div>
                             <div class="answer4">
                                 <input type="radio" id="option4" name="answer"
-                                    value="<?php echo $currentQuestion['opcao_4']; ?>">
+                                    value="<?php echo $currentQuestion["opcao_4"]; ?>">
                                 <label for="answer4">Salvador</label>
                             </div>
                     </div>
@@ -127,18 +128,18 @@ if (method_exists($controller, $action)) {
                 </div>
             </div>
         </section>
+    ';
+        }
 
-
-        <?php
         if (!isset($_SESSION['player1Finished'])) {
             echo '
                         <section class="section-timer">
             <div class="timer-out">
                 <div class="timer-in">
-                    <span id="time">15</span>
+                    <span id="time">10</span>
                 </div>
             </div>
-        </section>
+        </section>  
                     <section class="players">
             <div class="player-container">
                 <div class="disabled" id="disabled-div-2">
@@ -189,16 +190,26 @@ if (method_exists($controller, $action)) {
             </div>
         </section>
         ';
+        } else {
+            if ($_SESSION['player1Status'] == 0) {
+        ?>
+                <script>
+                    const url = window.location.href;
+                    window.location.href = url + "?player1=finished";
+                </script>
+        <?php
+                $_SESSION['player1Status']++;
+            }
         }
         ?>
 
     </main>
-
     <script src="../../js/start.js"></script>
     <script src="../../js/timer.js"></script>
     <script src="../../js/skip.js"></script>
     <script src="../../js/progress.js"></script>
     <script src="../../js/keyboard.js"></script>
+
 
 </body>
 

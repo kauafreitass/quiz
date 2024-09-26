@@ -1,7 +1,6 @@
 
 function handleSkip() {
     restartTimer();
-    skipToAnotherPlayer();
     disableButton1();
 }
 

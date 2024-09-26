@@ -1,13 +1,16 @@
+<?php
+session_destroy();
+?>
+
 <div class="game-start <?php if (isset($_GET['action'])) {
-    $_SESSION['total_questions'] = $_GET['total_perguntas'];
-    ?>
+                            $_SESSION['total_questions'] = $_GET['total_perguntas'];
+                        ?>
             <script>
                 start();
         </script>
         <?php
-        return "hidden";
-}
-; ?>" id="box">;
+                            return "hidden";
+                        }; ?>" id="box">
     <div class="start-box">
         <h3>Deseja começar o jogo?</h3>
         <form id="start-form" method="get" action="index.php?action=start">
@@ -19,3 +22,9 @@
         </form>
     </div>
 </div>
+
+<script src="../../js/start.js"></script>
+<script src="../../js/timer.js"></script>
+<script src="../../js/skip.js"></script>
+<script src="../../js/progress.js"></script>
+<script src="../../js/keyboard.js"></script>

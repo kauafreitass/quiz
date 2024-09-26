@@ -1,4 +1,5 @@
 <?php
+
 require_once 'C:\aluno2\xampp\htdocs\quiz\model\QuizModel.php';
 
 class QuizController
@@ -71,6 +72,13 @@ class QuizController
     {
         $questions = $_SESSION['questions'];
         $currentQuestionIndex = $_SESSION['current_question'];
+
+        $action = isset($_GET['action']) ? $_GET['action'] : 'showQuestionSelection';
+
+        if ($currentQuestionIndex == $_SESSION['total_questions']) {
+            header("Location: index.php?action=$action&player1=finished");
+            $_SESSION['current_question']++;
+        }
 
         if ($currentQuestionIndex < $_SESSION['total_questions']) {
             $currentQuestion = $questions[$currentQuestionIndex];
@@ -165,8 +173,5 @@ class QuizController
         require 'C:\aluno2\xampp\htdocs\quiz\view\quiz\finalResult.php';
 
         // Certifique-se de que a sessão foi iniciada antes de tentar destruí-la
-        if (session_status() === PHP_SESSION_ACTIVE) {
-            session_destroy();
-        }
     }
 }
