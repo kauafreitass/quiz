@@ -365,7 +365,6 @@ body {
 
 .result-container {
   text-align: center;
-  margin-top: 50px;
   padding: 20px;
   border-radius: 20px;
   background-color: var(--cor-jogadores);
@@ -389,9 +388,7 @@ body {
 }
 
 .result-container a {
-  display: inline-block;
-  margin-top: 20px;
-  padding: 10px 20px;
+  padding: 10px 5px;
   background-color: var(--cor-botao);
   color: white;
   text-decoration: none;
@@ -407,17 +404,38 @@ body {
   width: 200;
   height: 60px;
   border: none;
-  border-radius: 8px;
+  border-radius: 20px;
   padding: 12px;
   font-size: 18px;
-  position: relative;
   cursor: pointer;
-  top: 100px;
   transition: all 0.3s ease;
 }
 
 .playagain-btn:hover {
   transform: scale(1.05);
+}
+
+.final-result {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 500px;
+  height: 400px;
+  font-size: 80px;
+  gap: 80px;
+  background-color: var(--cor-card);
+  color: var(--cor-texto2);
+  border-radius: 20px;
+  position: relative;
+  top: 50px;
+}
+
+.winner-text {
+  font-size: 72px;
+  text-align: center;
+  border-radius: 40px;
+  margin: 20px;
 }
 
 

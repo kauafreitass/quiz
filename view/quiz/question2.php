@@ -29,7 +29,7 @@ if (isset($_POST['skippedQuestionPlayer2'])) {
                         <input type="hidden" name="questionId" value="<?php echo $currentQuestionPlayer2['id']; ?>">
                         <div class="answer1">
                             <input type="radio" id="option1" name="answer"
-                                value="A" required>
+                                value="A">
                             <label for="answer1"><?php echo $currentQuestionPlayer2['opcao_1']; ?></label>
                         </div>
                         <div class="answer2">

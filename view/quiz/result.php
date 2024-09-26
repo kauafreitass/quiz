@@ -14,7 +14,7 @@ $scorePlayer1 = $_SESSION['scorePlayer1'];
 <body>
     <main class="card-players">
         <div class="result-container" style="text-align: center; margin-top: 50px; margin-left: 200px; height: 250px ;">
-            <h2>Quiz Concluído!</h2>
+            <h2>Jogador 1</h2>
             <p>Sua pontuação final é: <strong><?php echo htmlspecialchars($scorePlayer1, ENT_QUOTES, 'UTF-8'); ?></strong> ponto(s).</p>
         </div>
 
